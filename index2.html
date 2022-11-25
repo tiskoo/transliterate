@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="https://www.google.com/jsapi">
+    </script>
+    <script type="text/javascript">
+
+      // Load the Google Transliterate API
+      google.load("elements", "1", {
+            packages: "transliteration"
+          });
+
+      function onLoad() {
+        var options = {
+            sourceLanguage:
+                google.elements.transliteration.LanguageCode.ENGLISH,
+            destinationLanguage:
+                [google.elements.transliteration.LanguageCode.HINDI],
+            shortcutKey: 'ctrl+g',
+            transliterationEnabled: true
+        };
+
+        // Create an instance on TransliterationControl with the required
+        // options.
+        var control =
+            new google.elements.transliteration.TransliterationControl(options);
+
+        // Enable transliteration in the textbox with id
+        // 'transliterateTextarea'.
+        control.makeTransliteratable(['transliterateTextarea']);
+      }
+      google.setOnLoadCallback(onLoad);
+    </script>
+  </head>
+  <body>
+  <img src="transliteration_logo.gif" width="183" height="40" alt="" title="" border="0" align="" />
+  
+  <div class="display" id="transliterate">
+  <br>
+  <center><img src="trans.jpg" width="310" height="80" alt="" title="" border="0" align="" /></center>
+    <div id='translControl'></div>
+    <br><form><textarea id="transliterateTextarea" style="width:450px;height:175px" name="transliterateTextarea"></textarea><br> 
+<center><input type="button" value="Select Text" onClick="javascript:this.form.trans.focus();this.form.trans.select();" align="center"></center>
+
+<center><img src="instructions.jpg" width="246" height="50" alt="" title="" border="0" align="center" /></center>
+<br>
+<br>
+<strong><font size="1" face="Arial"><div align="right"><a href="http://www.poojasrinivas.com/chrome/indian-languages.html" target="_blank">Need Help? Click Here</a></div></font></strong>
+</div>
+	<br>
+	
+  </body>
+</html>
