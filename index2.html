@@ -1,8 +1,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <title>Transliteration in Rich Text Editor</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi">
+    </script>
     <script type="text/javascript">
 
       // Load the Google Transliterate API
@@ -12,12 +12,10 @@
 
       function onLoad() {
         var options = {
-            sourceLanguage:
-                google.elements.transliteration.LanguageCode.ENGLISH,
-            destinationLanguage:
-                [google.elements.transliteration.LanguageCode.HINDI],
-            shortcutKey: 'ctrl+g',
-            transliterationEnabled: true
+          sourceLanguage: 'en',
+          destinationLanguage: ['hi','kn','ml','ta','te'],
+          shortcutKey: 'ctrl+g',
+          transliterationEnabled: true
         };
 
         // Create an instance on TransliterationControl with the required
@@ -25,15 +23,22 @@
         var control =
             new google.elements.transliteration.TransliterationControl(options);
 
-        // Enable transliteration in the editable DIV with id
-        // 'transliterateDiv'.
-        control.makeTransliteratable(['transliterateDiv']);
+        // Enable transliteration in the textfields with the given ids.
+        var ids = [ "transl1", "transl2" ];
+        control.makeTransliteratable(ids);
+
+        // Show the transliteration control which can be used to toggle between
+        // English and Hindi and also choose other destination language.
+        control.showControl('translControl');
       }
       google.setOnLoadCallback(onLoad);
+
     </script>
   </head>
   <body>
-    Type in Hindi (Press Ctrl+g to toggle between English and Hindi)<br>
-    <div id="transliterateDiv" contenteditable="true" style="width:600px;height:200px;border:1px solid;overflow-y:scroll"></div>
+  <center>Type in Indian languages (Press Ctrl+g to toggle between English and Hindi)</center>
+    <div id='translControl'></div>
+    <br>Title : <input type='textbox' id="transl1"/>
+    <br>Body<br><textarea id="transl2" style="width:600px;height:200px"></textarea>
   </body>
 </html>
